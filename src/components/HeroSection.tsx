@@ -69,8 +69,10 @@ export const HeroSection = () => {
             variant="outline"
             className="border-gray-400 text-gray-300 hover:bg-gray-800 px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
           >
-            <FileText className="mr-2 h-5 w-5" />
-            View Resume
+            <a href={resume} target="_blank" rel="noopener noreferrer">
+              <FileText className="mr-2 h-5 w-5" />
+              View Resume
+            </a>
           </Button>
         </div>
 
