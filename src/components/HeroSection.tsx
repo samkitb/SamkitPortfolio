@@ -1,7 +1,7 @@
 import resume from '../assets/Bothra-CV-2025.pdf'; // adjust the path as needed
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, FileText } from "lucide-react";
+import { Mail, Linkedin} from "lucide-react";
 
 export const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
