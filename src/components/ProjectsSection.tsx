@@ -22,13 +22,6 @@ export const ProjectsSection = () => {
       gradient: "from-purple-600 to-pink-600",
     },
     {
-      title: "Wearable IMU Sensors for Rehabilitation",
-      description: "AI-powered 3D modeling of motion to track head/neck posture.",
-      tools: ["Python", "Lenovo 3D Camera", "Excel", "First Principles"],
-      details: "Validated against Optotrak motion capture gold standard. Created precise motion tracking system for medical rehabilitation applications.",
-      gradient: "from-purple-600 to-pink-600",
-    },
-    {
       title: "AI & Social Media Polling Research",
       description: "Survey-based study on gendered perceptions of AI's influence on misinformation and privacy.",
       tools: ["SPSS", "Statistical Analysis", "Survey Design"],
