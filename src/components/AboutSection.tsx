@@ -39,7 +39,7 @@ export const AboutSection = () => {
           {/* About Text */}
           <div className="text-gray-300 space-y-6">
             <p className="text-lg leading-relaxed">
-              I am a dual-enrolled high school at{" "}
+              I am a dual-enrolled high school student at{" "}
               <span className="text-blue-400 font-semibold">Florida Atlantic University</span>{" "}
               pursuing a Bachelor's in Computer Science and a minor in Financial Technology.
             </p>
@@ -48,7 +48,7 @@ export const AboutSection = () => {
               <span className="text-purple-400 font-semibold">AI, ML, Software Development, and sensor integration</span>
               (See projects below for more information). I've presented my work in this fields at state and national conferences such as{" "}
               <span className="text-purple-400 font-semibold">NCUR and FURC</span>
-              , won first place in university-wide competitions, and mentored younger students in both research and STEM fundamentals. Whether its surveying populations on AI or creating ML models to detect fall risk in patients, I am passionate about using tech to solve meaningful problems.
+              , won first place in university-wide competitions, and mentored younger students and undergrads in both research and STEM fundamentals. Whether its surveying populations on AI or creating ML models to detect fall risk in patients, I am passionate about using tech to solve meaningful problems.
             </p>
 
             {/* Stats Bar */}
