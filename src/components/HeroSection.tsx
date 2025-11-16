@@ -1,7 +1,7 @@
 import resume from '../assets/Bothra-CV-2025.pdf'; // adjust the path as needed
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin} from "lucide-react";
+import { Mail, Linkedin, FileText } from "lucide-react";
 
 export const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -54,7 +54,7 @@ export const HeroSection = () => {
             Samkit Bothra
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-in-right">
-            Researcher | Student Mayor | Mentor | Student
+            Researcher | Leader | Mentor | Student
           </p>
         </div>
 
@@ -66,11 +66,17 @@ export const HeroSection = () => {
             Explore My Projects
           </Button>
           <Button
+            asChild
             variant="outline"
             className="border-gray-400 text-gray-300 hover:bg-gray-800 px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
           >
-            <a href={resume} target="_blank" rel="noopener noreferrer">
-              View Resume
+            <a 
+              href={resume} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <FileText className="mr-2 h-5 w-5" />
+              Curriculum Vitae
             </a>
           </Button>
         </div>
