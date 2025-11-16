@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export const ProjectsSection = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -18,22 +19,23 @@ export const ProjectsSection = () => {
       title: "Wearable IMU Sensors for Rehabilitation",
       description: "AI-powered 3D modeling of motion to track head/neck posture.",
       tools: ["Python", "Lenovo 3D Camera", "Excel", "First Principles"],
-      details: "Validated against Optotrak motion capture gold standard. Created precise motion tracking system for medical rehabilitation applications.",
+      details: "Created precise motion tracking system for medical rehabilitation applications. First author published.",
       gradient: "from-purple-600 to-pink-600",
     },
     {
       title: "AI & Social Media Polling Research",
       description: "Survey-based study on gendered perceptions of AI's influence on misinformation and privacy.",
       tools: ["SPSS", "Statistical Analysis", "Survey Design"],
-      details: "Presented at NCUR, FURC, and FAU OURI Symposium. Comprehensive analysis of societal perceptions of AI technology.",
+      details: "Comprehensive analysis of societal perceptions of AI technology. Placed 1st in oral presentation at university-wide symposium.",
       gradient: "from-teal-600 to-green-600",
     },
     {
-      title: "Microplastics Field Research",
-      description: "Led microplastic sampling team in Wahoo Bay.",
-      tools: ["Field Research", "Data Collection", "Environmental Science"],
-      details: "Collaborative research with college graduates. Conducted environmental impact studies on marine ecosystems.",
+      title: "ResearchConnectAI Co-Founder",
+      description: "Co-founder of ResearchConnectAI, a platform to make research accessible to all students.",
+      tools: ["Python", "React", "Node.js", "PostgreSQL"],
+      details: "Created a platform for high school & college students to find and connect with professors for research opportunities.",
       gradient: "from-orange-600 to-red-600",
+      website: "https://researchconnectai.com", // Update with your actual website URL
     },
   ];
 
@@ -56,7 +58,25 @@ export const ProjectsSection = () => {
               <div className={`h-2 w-full bg-gradient-to-r ${project.gradient} rounded-full mb-4`}></div>
               
               <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-              <p className="text-gray-300 mb-4">{project.description}</p>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                <p className="text-gray-300 flex-1">{project.description}</p>
+                {project.website && (
+                  <Button
+                    asChild
+                    size="sm"
+                    className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-full sm:w-auto"
+                  >
+                    <a 
+                      href={project.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Visit Website
+                    </a>
+                  </Button>
+                )}
+              </div>
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tools.map((tool, toolIndex) => (
