@@ -12,7 +12,7 @@ export const ConferencesSection = () => {
       location: "Florida State University",
       project: "Finding Drug Targeting Sites on COVID-19 Main Protease",
       type: "Poster Presentations",
-      description: "Got selected into the highly selective YSP where I worked as a Molecular Biophysics Researcher at FSU.",
+      description: "Got selected into the highly selective YSP where I worked as a Molecular Biophysics Researcher at FSU. Presented my research at the end of the program to professors & staff across the university.",
       achievements: "One of the 40 high school students from across Florida selected from a pool of hundreds",
     },
     {
@@ -36,7 +36,7 @@ export const ConferencesSection = () => {
       location: "Tampa",
       project: "Multi-disciplinary Research",
       type: "Poster Presentation",
-      description: "Showcased comprehensive research findings at the Florida Undergraduate Research Conference.",
+      description: "Presented research on gendered perceptions of AI influence on misinformation and privacy at the Florida Undergraduate Research Conference.",
       achievements: "Outstanding undergraduate researcher recognition",
     },
     {
