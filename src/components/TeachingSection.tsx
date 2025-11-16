@@ -6,25 +6,25 @@ export const TeachingSection = () => {
   const roles = [
     {
       title: "FAU Research Peer Mentor",
-      subjects: "Research Fields, Undergraduate Students",
+      subjects: "Mentoring undergraduate students in research fields",
       icon: "🔬",
       color: "from-blue-400 to-purple-400",
     },
     {
-      title: "FAU Math Tutor",
-      subjects: "College Algebra, Problem Solving",
-      icon: "📊",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Kumon Assistant Instructor",
-      subjects: "Reading, Math",
+      title: "Physics Learning Assistant",
+      subjects: "Tutoring college level physics students",
       icon: "📚",
       color: "from-purple-500 to-pink-500",
     },
     {
+      title: "FAU Math Tutor",
+      subjects: "Algebra tutoring for college level students",
+      icon: "📊",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
       title: "STAR Lab Instructor",
-      subjects: "Lab safety, Experiment coaching, Young Students",
+      subjects: "Mentoring elementary school students in STEM fields",
       icon: "🔬",
       color: "from-green-500 to-teal-500",
     },
