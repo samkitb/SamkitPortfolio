@@ -5,10 +5,10 @@ import profilePic from '../assets/PIC.png'; // adjust the path as needed
 
 export const AboutSection = () => {
   const stats = [
-    { label: "GPA", value: "4.0" },
+    { label: "GPA", value: "3.8" },
     { label: "College Credits", value: "80+" },
-    { label: "Presentations", value: "6" },
-    { label: "Research Projects", value: "4" },
+    { label: "Main Projects", value: "4" },
+    { label: "Presentations", value: "5" },
   ];
 
   return (
@@ -41,14 +41,14 @@ export const AboutSection = () => {
             <p className="text-lg leading-relaxed">
               I am a dual-enrolled high school student at{" "}
               <span className="text-blue-400 font-semibold">Florida Atlantic University</span>{" "}
-              pursuing a Bachelor's in Computer Science and a minor in Financial Technology.
+              pursuing a Bachelor's in Computer Science and a Minor in Financial Technology.
             </p>
             <p className="text-lg leading-relaxed">
               My work blends academic research with real world applications in fields such as{" "}
               <span className="text-purple-400 font-semibold">AI, ML, Software Development, and sensor integration</span>
-              (See projects below for more information). I've presented my work in this fields at state and national conferences such as{" "}
+              (See projects below for more information). I've presented my work in these fields at state and national conferences such as{" "}
               <span className="text-purple-400 font-semibold">NCUR and FURC</span>
-              , won first place in university-wide competitions, and mentored younger students and undergrads in both research and STEM fundamentals. Whether its surveying populations on AI or creating ML models to detect fall risk in patients, I am passionate about using tech to solve meaningful problems.
+              , won first place in university-wide competitions, and mentored younger students and undergraduate students in both research and STEM fundamentals. Whether its surveying populations on AI or creating ML models to detect fall risk in patients, I am passionate about using tech to solve meaningful problems.
             </p>
 
             {/* Stats Bar */}
