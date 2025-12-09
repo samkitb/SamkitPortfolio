@@ -20,6 +20,7 @@ export const ProjectsSection = () => {
       description: "AI-powered 3D modeling of motion to track head/neck posture.",
       tools: ["Python", "Lenovo 3D Camera", "Excel", "First Principles"],
       details: "Created precise motion tracking system for medical rehabilitation applications. First author published.",
+      publication: "https://wseas.com/journals/articles.php?id=11059",
       gradient: "from-purple-600 to-pink-600",
     },
     {
@@ -73,6 +74,22 @@ export const ProjectsSection = () => {
                       onClick={(e) => e.stopPropagation()}
                     >
                       Visit Website
+                    </a>
+                  </Button>
+                )}
+                {!project.website && project.publication && (
+                  <Button
+                    asChild
+                    size="sm"
+                    className={`bg-gradient-to-r ${project.gradient} hover:brightness-110 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-full sm:w-auto`}
+                  >
+                    <a
+                      href={project.publication}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      View Publication
                     </a>
                   </Button>
                 )}
