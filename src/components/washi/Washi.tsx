@@ -64,7 +64,7 @@ export const Washi = () => {
           <BrushName text={PROFILE.name} />
           <div className="w-herofoot">
             <SplitFlap words={PROFILE.roles} />
-            <span className="w-hint">press and drag to paint</span>
+            <span className="w-hint">click and drag to paint</span>
           </div>
         </header>
 
@@ -80,6 +80,7 @@ export const Washi = () => {
               <div>
                 <div className="k">Email</div>
                 <div className="v"><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></div>
+                <div className="v"><a href={`mailto:${PROFILE.emailEdu}`}>{PROFILE.emailEdu}</a></div>
               </div>
               <div>
                 <div className="k">Phone</div>
@@ -91,7 +92,7 @@ export const Washi = () => {
               </div>
               <div>
                 <div className="k">Focus</div>
-                <div className="v">Clinical AI · Quantum optimization · ML research</div>
+                <div className="v">Markets · Software · Medicine</div>
               </div>
             </div>
             <div className="w-socials">
@@ -211,6 +212,7 @@ export const Washi = () => {
                     <div className="w-cell">
                       <div className="w-cap">Email</div>
                       <div className="v"><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></div>
+                      <div className="v"><a href={`mailto:${PROFILE.emailEdu}`}>{PROFILE.emailEdu}</a></div>
                     </div>
                     <div className="w-cell">
                       <div className="w-cap">Phone</div>

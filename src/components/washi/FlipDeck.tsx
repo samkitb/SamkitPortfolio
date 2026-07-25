@@ -79,7 +79,7 @@ const Card = ({ e }: { e: Entry }) => {
           <div className="w-fseal" aria-hidden>
             印
           </div>
-          <div className="w-fliphint">tap to see what I did →</div>
+          <div className="w-fliphint">click to see what I did →</div>
         </div>
       </div>
     </div>

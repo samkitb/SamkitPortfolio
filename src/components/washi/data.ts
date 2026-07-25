@@ -5,6 +5,7 @@ export const PROFILE = {
   name: "Samkit Bothra",
   roles: ["RESEARCHER", "DEVELOPER", "FOUNDER"],
   email: "samkitbothra11@gmail.com",
+  emailEdu: "sb73635@my.utexas.edu",
   phone: "(754) 946-0764",
   site: "samkitbothra.org",
   github: "https://github.com/samkitb",

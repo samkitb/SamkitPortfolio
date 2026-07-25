@@ -46,7 +46,7 @@ export const PubCard = () => {
               {PUBLICATION.doi}
             </a>
           </div>
-          <div className="w-fliphint">tap to read the abstract →</div>
+          <div className="w-fliphint">click to read the abstract →</div>
         </div>
       </div>
     </div>
