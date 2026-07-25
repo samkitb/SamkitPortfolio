@@ -92,7 +92,11 @@ export const Washi = () => {
               </div>
               <div>
                 <div className="k">Focus</div>
-                <div className="v">Markets · Software · Medicine</div>
+                <div className="v">
+                  <span className="w-nb">Software Development</span> ·{" "}
+                  <span className="w-nb">Quantitative Finance</span> ·{" "}
+                  <span className="w-nb">Biotechnology</span>
+                </div>
               </div>
             </div>
             <div className="w-socials">

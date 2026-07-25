@@ -424,3 +424,6 @@ body {
   border-top: 1px solid var(--hair); padding: 26px 0 40px; display: flex;
   justify-content: space-between; gap: 12px; flex-wrap: wrap;
 }
+
+/* keep multi-word focus terms from breaking mid-phrase */
+.w-nb { white-space: nowrap; }
