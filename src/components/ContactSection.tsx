@@ -1,18 +1,13 @@
-
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/motion";
 
 export const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,95 +20,91 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-          Let's Connect
-        </h2>
+    <section id="contact" data-signal-mode="pulse" className="scroll-mt-24 px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          index="08"
+          eyebrow="Contact"
+          title="Let's build something."
+          description="Open to research collaborations, internships, and new opportunities."
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4">Get In Touch</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                I'm always interested in discussing new opportunities, research collaborations, 
-                or internship opportunities. Let's build something amazing together!
-              </p>
-            </div>
-
-            <div className="space-y-4">
+        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
+          <Reveal>
+            <div className="space-y-3">
               <a
                 href="mailto:samkitbothra11@gmail.com"
-                className="flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/50 transition-all duration-300 hover:scale-105 group"
+                className="surface group flex items-center justify-between p-5 hover:-translate-y-0.5"
               >
-                <Mail className="h-6 w-6 text-blue-400 mr-4 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-semibold">Email</div>
-                  <div className="text-gray-400">samkitbothra11@gmail.com</div>
+                <div className="flex items-center gap-4">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-accent">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="font-medium text-foreground">Email</div>
+                    <div className="text-sm text-muted-foreground">samkitbothra11@gmail.com</div>
+                  </div>
                 </div>
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
               </a>
 
               <a
                 href="https://www.linkedin.com/in/samkit-bothra/"
-                className="flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/50 transition-all duration-300 hover:scale-105 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="surface group flex items-center justify-between p-5 hover:-translate-y-0.5"
               >
-                <Linkedin className="h-6 w-6 text-blue-400 mr-4 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-semibold">LinkedIn</div>
-                  <div className="text-gray-400">Connect with me</div>
+                <div className="flex items-center gap-4">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-accent">
+                    <Linkedin className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="font-medium text-foreground">LinkedIn</div>
+                    <div className="text-sm text-muted-foreground">Connect with me</div>
+                  </div>
                 </div>
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
               </a>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Contact Form */}
-          <Card className="bg-gray-800/50 border-gray-700 p-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
-                />
-              </div>
-
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
-                />
-              </div>
-
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 resize-none"
-                />
-              </div>
-
-              <Button
+          <Reveal delay={0.1}>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="h-12 bg-card"
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="h-12 bg-card"
+              />
+              <Textarea
+                name="message"
+                placeholder="Your message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="resize-none bg-card"
+              />
+              <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+                className="w-full rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:scale-[1.01]"
               >
-                Send Message
-              </Button>
+                Send message
+              </button>
             </form>
-          </Card>
+          </Reveal>
         </div>
       </div>
     </section>

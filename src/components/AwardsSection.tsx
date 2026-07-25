@@ -1,59 +1,54 @@
+import { Trophy, Medal, Flag, Gavel } from "lucide-react";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Stagger, StaggerItem } from "@/components/motion";
 
-import { Card } from "@/components/ui/card";
-import { Award } from "lucide-react";
+const awards = [
+  {
+    title: "Research Symposium — 1st Place",
+    year: "2025",
+    description: "First place in oral presentation against undergraduate and graduate students, as a high schooler.",
+    Icon: Trophy,
+  },
+  {
+    title: "DECA International Qualifier",
+    year: "2025",
+    description: "1st place district, 3rd place state, and 98/100 in roleplay as a financial advisor.",
+    Icon: Medal,
+  },
+  {
+    title: "State Champion in Golf",
+    year: "Multiple years",
+    description: "Two-time state qualifier with several individual tournament wins across South Florida.",
+    Icon: Flag,
+  },
+  {
+    title: "Lincoln-Douglas Debate",
+    year: "Multiple years",
+    description: "Multiple awards across competitive debate tournaments.",
+    Icon: Gavel,
+  },
+];
 
 export const AwardsSection = () => {
-  const awards = [
-    {
-      title: "Research Symposium First Place Winner",
-      year: "2025",
-      description: "1st Place in oral presentation against undergrad and grad students as high schooler.",
-      color: "from-pink-400 to-purple-400"
-    },
-    {
-      title: "DECA International Qualifier",
-      year: "2025",
-      description: "1st Place District, 3rd Place State, 98/100 in roleplay as financial advisor.",
-      color: "from-yellow-400 to-orange-400",
-    },
-    {
-      title: "State Champion in Golf",
-      year: "Multiple Years",
-      description: "2× Qualifier, won several individual tournaments in South Florida.",
-      color: "from-green-400 to-teal-400",
-    },
-    {
-      title: "Lincoln-Douglas Debate Awards",
-      year: "Multiple Years",
-      description: "Multiple awards in competitive debate tournaments.",
-      color: "from-blue-400 to-purple-400",
-    },
-  ];
-
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-          Awards & Honors
-        </h2>
+    <section id="awards" className="scroll-mt-24 px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading index="04" eyebrow="Recognition" title="Awards & honors." />
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {awards.map((award, index) => (
-            <Card
-              key={index}
-              className="bg-gray-800/50 border-gray-700 p-6 text-center hover:bg-gray-700/50 transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-            >
-              <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${award.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                <Award className="h-8 w-8 text-white" />
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {awards.map(({ title, year, description, Icon }) => (
+            <StaggerItem key={title} className="h-full">
+              <div className="surface h-full p-6 hover:-translate-y-1">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-accent">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{title}</h3>
+                <div className="mt-1 text-sm text-accent">{year}</div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground text-pretty">{description}</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">{award.title}</h3>
-              <div className={`text-transparent bg-gradient-to-r ${award.color} bg-clip-text font-semibold mb-3`}>
-                {award.year}
-              </div>
-              <p className="text-gray-300 text-sm">{award.description}</p>
-            </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

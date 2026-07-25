@@ -1,67 +1,106 @@
+import { useEffect, useRef, useState } from "react";
+import { animate, useInView, useReducedMotion } from "framer-motion";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import profilePic from "../assets/PIC.png";
 
-import { Card } from "@/components/ui/card";
-import profilePic from '../assets/PIC.png'; // adjust the path as needed
+const CountUp = ({ value, decimals = 0, suffix = "" }: { value: number; decimals?: number; suffix?: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20%" });
+  const reduce = useReducedMotion();
+  const [display, setDisplay] = useState(0);
 
-
-export const AboutSection = () => {
-  const stats = [
-    { label: "GPA", value: "3.8" },
-    { label: "College Credits", value: "80+" },
-    { label: "Main Projects", value: "4" },
-    { label: "Presentations", value: "5" },
-  ];
+  useEffect(() => {
+    if (!inView) return;
+    if (reduce) {
+      setDisplay(value);
+      return;
+    }
+    const controls = animate(0, value, {
+      duration: 1.3,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(v),
+    });
+    return () => controls.stop();
+  }, [inView, value, reduce]);
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-          About Me
-        </h2>
+    <span ref={ref}>
+      {display.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
+};
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Profile Image Placeholder */}
-          <div className="relative">
-            <div className="w-80 h-80 mx-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-gray-700/50">
-              <div className="text-gray-400 text-center">
-                <div className="w-80 h-80 mx-auto mb-4 bg-gray-600 rounded-full flex items-center justify-center">
-                  <img
-                    src={profilePic}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
+const stats = [
+  { value: 3.8, decimals: 1, suffix: "", label: "GPA" },
+  { value: 80, decimals: 0, suffix: "+", label: "College credits" },
+  { value: 4, decimals: 0, suffix: "", label: "Major projects" },
+  { value: 5, decimals: 0, suffix: "", label: "Presentations" },
+];
+
+export const AboutSection = () => {
+  return (
+    <section id="about" className="scroll-mt-24 px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          index="01"
+          eyebrow="About"
+          title="Turning curiosity into research that ships."
+        />
+
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <Reveal>
+            <div className="relative mx-auto max-w-sm">
+              <div className="overflow-hidden rounded-2xl border border-border">
+                <img
+                  src={profilePic}
+                  alt="Samkit Bothra"
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 hidden rounded-xl border border-border bg-card px-4 py-3 shadow-xl shadow-black/30 sm:block">
+                <div className="font-display text-sm font-medium text-foreground">Parkland, Florida</div>
+                <div className="text-xs text-muted-foreground">Student Mayor · FAU researcher</div>
               </div>
             </div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 blur-xl rounded-2xl -z-10"></div>
-          </div>
+          </Reveal>
 
-          {/* About Text */}
-          <div className="text-gray-300 space-y-6">
-            <p className="text-lg leading-relaxed">
-              I am a dual-enrolled high school student at{" "}
-              <span className="text-blue-400 font-semibold">Florida Atlantic University</span>{" "}
-              pursuing a Bachelor's in Computer Science and a Minor in Financial Technology.
-            </p>
-            <p className="text-lg leading-relaxed">
-              My work blends academic research with real world applications in fields such as{" "}
-              <span className="text-purple-400 font-semibold">AI, ML, Software Development, and sensor integration</span>
-              (See projects below for more information). I've presented my work in these fields at state and national conferences such as{" "}
-              <span className="text-purple-400 font-semibold">NCUR and FURC</span>
-              , won first place in university-wide competitions, and mentored younger students and undergraduate students in both research and STEM fundamentals. Whether its surveying populations on AI or creating ML models to detect fall risk in patients, I am passionate about using tech to solve meaningful problems.
-            </p>
+          <div>
+            <Reveal>
+              <div className="space-y-5 text-lg leading-relaxed text-muted-foreground text-pretty">
+                <p>
+                  I'm a dual-enrolled high school student at{" "}
+                  <span className="text-foreground">Florida Atlantic University</span>, pursuing a
+                  B.S. in Computer Science with a minor in Financial Technology.
+                </p>
+                <p>
+                  My work blends academic research with real-world applications across{" "}
+                  <span className="text-foreground">AI, machine learning, software, and sensor integration</span>.
+                  I've presented at state and national conferences like{" "}
+                  <span className="text-foreground">NCUR and FURC</span>, placed first in
+                  university-wide competitions, and mentored undergraduates and younger students in
+                  research and STEM fundamentals.
+                </p>
+                <p>
+                  Whether I'm surveying how people perceive AI or building models to detect fall risk
+                  in patients, I'm driven by using technology to solve meaningful problems.
+                </p>
+              </div>
+            </Reveal>
 
-            {/* Stats Bar */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
-              {stats.map((stat, index) => (
-                <Card key={index} className="bg-gray-800/50 border-gray-700 p-4 text-center hover:bg-gray-700/50 transition-all duration-300 hover:scale-105">
-                  <div className="text-2xl font-bold text-blue-400 mb-1">
-                    {stat.value}
+            <Stagger className="mt-10 grid grid-cols-2 gap-4">
+              {stats.map((stat) => (
+                <StaggerItem key={stat.label}>
+                  <div className="surface h-full px-5 py-5">
+                    <div className="font-display text-3xl font-semibold text-foreground md:text-4xl">
+                      <CountUp value={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+                    </div>
+                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
                   </div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </Card>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           </div>
         </div>
       </div>

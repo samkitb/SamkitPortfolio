@@ -1,0 +1,426 @@
+/* ─────────────────────────────────────────────────────────────
+   Washi — warm paper, ink, hairlines, one vermillion accent.
+   Deliberately plain CSS (not Tailwind tokens) so this theme is
+   self-contained and can't collide with the old dark palette.
+   ───────────────────────────────────────────────────────────── */
+
+/* the old dark theme still paints body via Tailwind base — override it here,
+   since this stylesheet loads after index.css */
+body {
+  background: #f7f4ed;
+  color: #1b1a17;
+}
+
+.washi {
+  --paper: #f7f4ed;
+  --paper2: #fbf9f4;
+  --ink: #1b1a17;
+  --mid: #8c8574;
+  --faint: #a9a291;
+  --hair: #e2dccd;
+  --hair2: #eee9dc;
+  --red: #c0392b;
+  --sans: "Hiragino Sans", "Avenir Next", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 2;
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+.washi::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.washi a { color: inherit; text-decoration: none; }
+.washi ::selection { background: rgba(192, 57, 43, 0.16); }
+
+.w-wrap { max-width: 1180px; margin: 0 auto; padding: 0 26px; }
+.w-cap {
+  font-size: 9.5px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint);
+}
+.w-seal {
+  width: 34px; height: 34px; border: 1px solid var(--red); color: var(--red);
+  display: grid; place-items: center; font-size: 11px; flex: none;
+}
+
+/* ── hero ─────────────────────────────────────────────── */
+.w-hero { padding: 46px 0 10px; }
+.w-brush { position: relative; border: 1px solid var(--hair); background: var(--paper2); }
+.w-brush canvas { display: block; width: 100%; touch-action: none; cursor: crosshair; }
+.w-herofoot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; padding: 16px 2px 0;
+}
+.w-hint { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--faint); }
+
+/* ── layout ───────────────────────────────────────────── */
+.w-shell {
+  display: grid; grid-template-columns: 320px 1fr; gap: 26px;
+  padding: 40px 0 90px; align-items: start;
+}
+@media (max-width: 960px) { .w-shell { grid-template-columns: 1fr; } }
+
+/* ── sidebar ──────────────────────────────────────────── */
+.w-side { border: 1px solid var(--hair); background: var(--paper2); padding: 26px 24px 28px; }
+@media (min-width: 961px) { .w-side { position: sticky; top: 26px; } }
+.w-portrait { border: 1px solid var(--hair); background: var(--paper); margin-bottom: 20px; }
+.w-portrait canvas { display: block; width: 100%; }
+.w-sname { font-size: 19px; font-weight: 300; letter-spacing: 0.16em; }
+.w-role { margin-top: 10px; min-height: 22px; }
+/* the one credential worth shouting — the only bordered vermillion in the card */
+.w-honor {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 14px;
+  border: 1px solid var(--red); color: var(--red);
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  padding: 9px 13px; line-height: 1;
+}
+.w-honor::before {
+  content: ""; width: 5px; height: 5px; background: var(--red);
+  transform: rotate(45deg); flex: none;
+}
+.w-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 9px;
+  border: 1px solid var(--red); color: var(--red);
+  font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 7px 11px; line-height: 1;
+}
+.w-badge::before {
+  content: ""; width: 4px; height: 4px; background: var(--red);
+  transform: rotate(45deg); flex: none;
+}
+
+.w-rule { height: 1px; background: var(--hair); margin: 22px 0 20px; }
+.w-info { display: grid; gap: 15px; }
+.w-info .k { font-size: 8px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--faint); }
+.w-info .v { font-size: 12.5px; line-height: 1.6; word-break: break-word; }
+.w-info .v a:hover { color: var(--red); }
+.w-socials { display: flex; gap: 9px; margin-top: 22px; flex-wrap: wrap; }
+.w-socials a {
+  width: 36px; height: 36px; border: 1px solid var(--hair); display: grid; place-items: center;
+  color: var(--ink); background: var(--paper2);
+  transition: border-color 0.35s, color 0.35s, background 0.35s;
+}
+.w-socials a svg { width: 17px; height: 17px; fill: currentColor; }
+/* the envelope is drawn with strokes, not fills — keep it stroked */
+.w-socials a svg path[stroke] { fill: none; }
+.w-socials a:hover { border-color: var(--red); color: var(--red); background: var(--paper); }
+
+/* ── tabs ─────────────────────────────────────────────── */
+.w-tabs { position: relative; display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 34px; }
+.w-tabs button {
+  position: relative; background: none; border: none; font-family: inherit; font-weight: 300;
+  color: var(--faint); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  padding: 0 0 12px; cursor: pointer; transition: color 0.35s;
+}
+.w-tabs button:hover { color: var(--mid); }
+.w-tabs button.on { color: var(--red); }
+/* driven by transform on both axes (see the `top` note in Washi.tsx) so it lands
+   on the right row once the six tabs wrap */
+.w-ind {
+  position: absolute; top: 0; height: 1px; background: var(--red); left: 0;
+  transition: transform 0.6s cubic-bezier(0.5, 1.5, 0.4, 1), width 0.6s cubic-bezier(0.5, 1.5, 0.4, 1);
+}
+
+/* ── panels ───────────────────────────────────────────── */
+.w-panel { border: 1px solid var(--hair); background: var(--paper2); padding: 40px 38px 44px; }
+@media (max-width: 600px) { .w-panel { padding: 28px 20px 32px; } }
+.w-phead { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.w-ptitle { font-size: clamp(22px, 3.4vw, 33px); font-weight: 200; letter-spacing: 0.14em; line-height: 1.3; }
+/* .washi a sets color:inherit at (0,1,1), so this needs a.w-gh to win. */
+.washi a.w-gh {
+  flex: none; width: 40px; height: 40px; display: grid; place-items: center;
+  border: 1px solid var(--hair); background: var(--paper2); color: var(--mid);
+  transition: color 0.35s, border-color 0.35s, transform 0.35s;
+}
+.w-gh svg { width: 19px; height: 19px; fill: currentColor; }
+.washi a.w-gh:hover { color: var(--red); border-color: var(--red); transform: translateY(-2px); }
+.w-psub { margin: 14px 0 30px; display: flex; align-items: center; gap: 12px; }
+.w-psub .l { height: 1px; width: 54px; background: var(--red); }
+.w-h3 {
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red);
+  margin: 42px 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--hair);
+}
+.w-h3:first-of-type { margin-top: 0; }
+.w-body { color: var(--mid); font-size: 13.5px; line-height: 2.1; margin-bottom: 16px; max-width: 68ch; }
+.w-body strong { font-weight: 400; color: var(--ink); }
+
+/* what I do */
+.w-doing { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+@media (max-width: 660px) { .w-doing { grid-template-columns: 1fr; } }
+.w-do { border-top: 1px solid var(--hair); padding-top: 16px; }
+.w-do .n {
+  width: 26px; height: 26px; border: 1px solid var(--red); color: var(--red); border-radius: 50%;
+  display: grid; place-items: center; font-size: 9px; margin-bottom: 12px;
+}
+.w-do h4 { font-size: 14.5px; font-weight: 400; letter-spacing: 0.06em; margin-bottom: 5px; }
+.w-do p { font-size: 12.5px; color: var(--mid); line-height: 1.95; }
+
+/* timeline — organisation marks carry the rhythm instead of plain dots */
+.w-tl { position: relative; }
+.w-tl::before { content: ""; position: absolute; left: 21px; top: 14px; bottom: 14px; width: 1px; background: var(--hair); }
+.w-item {
+  position: relative; padding-bottom: 32px;
+  display: grid; grid-template-columns: 44px 1fr; gap: 18px;
+}
+.w-mark {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--hair);
+  background: var(--paper2); display: grid; place-items: center;
+  font-size: 9px; letter-spacing: 0.1em; color: var(--mid); z-index: 1;
+}
+/* real marks ride in ink like everything else — grayscale keeps brand colour
+   from blowing up the paper/vermillion palette */
+.w-mark img {
+  width: 100%; height: 100%; object-fit: contain; padding: 9px;
+  filter: grayscale(1) contrast(1.08); opacity: 0.82;
+}
+@media (max-width: 520px) { .w-item { grid-template-columns: 1fr; } .w-tl::before { display: none; } }
+.w-item h4 { font-size: 16px; font-weight: 400; letter-spacing: 0.04em; }
+.w-item .org { font-size: 13px; color: var(--mid); }
+.w-item .when { font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); margin-top: 4px; }
+.w-item ul { margin: 12px 0 0 16px; }
+.w-item li { font-size: 12.5px; color: var(--mid); line-height: 1.95; margin-bottom: 6px; }
+
+/* ── flip deck (Education + Experience) ────────────────
+   One card per entry. Front is the identity; flipping reveals the achievements
+   with the real numbers pulled out. The card is the content, not a wrapper for
+   an effect — which is why it works for a handful of discrete items. */
+.w-deck { display: flex; flex-direction: column; gap: 14px; }
+.w-fc { perspective: 1600px; cursor: pointer; outline: none; }
+.w-fc:focus-visible .w-flip { box-shadow: 0 0 0 1px var(--red); }
+
+/* the pivot. preserve-3d + a rotateY on the whole thing swaps the faces.
+   height is driven from JS (useFlipHeight) so the card sizes to whichever face
+   is showing — short on the front, growing to the back when flipped. */
+.w-flip {
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.05, 0.2, 1),
+              height 0.7s cubic-bezier(0.4, 0.05, 0.2, 1);
+}
+.w-fc.flipped .w-flip { transform: rotateY(180deg); }
+
+/* both faces float at natural height and are measured; neither is forced to the
+   other's size, so the front has no dead space */
+.w-face {
+  position: absolute; top: 0; left: 0; width: 100%;
+  border: 1px solid var(--hair); background: var(--paper2);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  padding: 24px 26px;
+}
+.w-back { transform: rotateY(180deg); }
+.w-front {
+  display: grid; grid-template-columns: 52px 1fr auto; gap: 20px; align-items: center;
+  padding-bottom: 42px;
+}
+/* the hidden (rotated-away) face still overflows the shorter container — stop it
+   from intercepting clicks in the empty space below the card */
+.w-fc:not(.flipped) .w-back { pointer-events: none; }
+.w-fc.flipped .w-front, .w-fc.flipped .w-pubfront { pointer-events: none; }
+
+.w-fc:hover .w-flip { transform: translateY(-2px); }
+.w-fc.flipped:hover .w-flip { transform: rotateY(180deg) translateY(-2px); }
+
+.w-fmark {
+  width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--hair);
+  background: var(--paper); display: grid; place-items: center;
+  font-size: 11px; letter-spacing: 0.08em; color: var(--mid);
+}
+.w-fmark img { width: 100%; height: 100%; object-fit: contain; padding: 11px; filter: grayscale(1) contrast(1.08); opacity: 0.85; }
+.w-fbody h4 { font-size: 16px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.4; }
+.w-fbody .org { font-size: 13px; color: var(--mid); margin-top: 2px; }
+.w-fbody .when { font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
+.w-fbody .w-badge { margin-top: 10px; }
+
+.w-fseal {
+  align-self: start; width: 30px; height: 30px; display: grid; place-items: center;
+  border: 1px solid var(--red); color: var(--red); font-size: 14px; line-height: 1;
+  opacity: 0.85;
+}
+
+.w-fcap { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.w-back ul { margin: 0 0 0 16px; }
+.w-back li { font-size: 12.5px; color: var(--mid); line-height: 1.95; margin-bottom: 8px; }
+.w-back li:last-child { margin-bottom: 0; }
+.w-back .w-empty { font-size: 13px; color: var(--mid); font-style: italic; }
+/* the payoff of the flip: the resume's real metrics, pulled out */
+.w-num { color: var(--red); font-variant-numeric: tabular-nums; }
+
+.w-fliphint {
+  font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint);
+  transition: color 0.3s;
+}
+.w-front .w-fliphint, .w-pubfront .w-fliphint { position: absolute; right: 26px; bottom: 14px; }
+.w-back .w-fliphint { margin-top: 16px; }
+.w-fc:hover .w-fliphint { color: var(--red); }
+
+/* publication flip — front carries the citation, back the abstract */
+.w-pubfront { padding-bottom: 42px; }
+.w-pubfront .t { font-size: 14.5px; font-style: italic; line-height: 1.7; }
+.w-pubfront .m { font-size: 11.5px; color: var(--mid); margin-top: 8px; }
+.w-pubfront .m a { color: var(--red); }
+.w-abs { font-size: 12px; color: var(--mid); line-height: 1.9; }
+
+@media (max-width: 520px) {
+  .w-front { grid-template-columns: 44px 1fr; gap: 14px; }
+  .w-fseal { display: none; }
+  .w-front .w-fliphint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .w-flip { transition: none; }
+}
+
+/* works */
+.w-works { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
+.w-work {
+  background: var(--paper2); padding: 24px 22px; cursor: pointer;
+  transition: background 0.35s; display: grid; grid-template-columns: 40px 1fr auto; gap: 16px;
+  align-items: center;
+}
+/* screenshots sit desaturated with the paper and come to life on hover */
+.w-shot { width: 148px; flex: none; border: 1px solid var(--hair); overflow: hidden; line-height: 0; }
+.w-shot img {
+  width: 100%; height: 92px; object-fit: cover; object-position: top;
+  filter: grayscale(0.85) contrast(1.02); opacity: 0.9;
+  transition: filter 0.45s, opacity 0.45s, transform 0.45s;
+}
+.w-work:hover .w-shot img { filter: none; opacity: 1; transform: scale(1.03); }
+.w-workmeta { display: flex; align-items: center; gap: 11px; margin-top: 12px; }
+.w-livetag {
+  display: inline-block; font-size: 8px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 4px 9px;
+}
+/* per-project repo link. .washi a sets color:inherit, so scope with a.w-workgh. */
+.washi a.w-workgh {
+  width: 24px; height: 24px; display: grid; place-items: center; flex: none;
+  border: 1px solid var(--hair); background: var(--paper); color: var(--mid);
+  transition: color 0.3s, border-color 0.3s;
+}
+.w-workgh svg { width: 14px; height: 14px; fill: currentColor; }
+.washi a.w-workgh:hover { color: var(--red); border-color: var(--red); }
+@media (max-width: 720px) {
+  .w-work { grid-template-columns: 32px 1fr; }
+  .w-shot { display: none; }
+}
+
+/* modal screenshot + link row */
+.w-shotbig { display: block; margin: 18px 0 4px; border: 1px solid var(--hair); line-height: 0; overflow: hidden; }
+.w-shotbig img { width: 100%; display: block; transition: transform 0.5s; }
+.w-shotbig:hover img { transform: scale(1.015); }
+.w-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.w-note { margin-top: 14px; font-size: 11px; line-height: 1.9; color: var(--faint); }
+.w-work:hover { background: #fff; }
+.w-work .n { font-size: 11px; letter-spacing: 0.16em; color: var(--red); }
+.w-work h4 { font-size: 16.5px; font-weight: 400; letter-spacing: 0.03em; }
+.w-work .st { font-size: 12px; color: var(--faint); margin-top: 3px; }
+.w-work .tk { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-top: 10px; }
+
+/* the seal is aria-hidden, so the rank is read out here instead */
+.washi .sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* awards — a hanko seal per finish. The seal carries the rank (filled = 1st,
+   outlined = 3rd) so the cards themselves stay quiet. */
+.w-tally {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--hair); background: var(--paper2); margin-bottom: 22px;
+}
+.w-tally > div { padding: 20px 18px; text-align: center; border-left: 1px solid var(--hair); }
+.w-tally > div:first-child { border-left: 0; }
+.w-tally b {
+  display: block; font-size: 27px; font-weight: 200; letter-spacing: 0.04em;
+  color: var(--red); line-height: 1;
+}
+.w-tally span {
+  display: block; margin-top: 9px; font-size: 8.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--faint);
+}
+
+/* .w-h3 inside a group is its parent's first div, so :first-of-type would zero
+   its top margin and collapse the gap between groups — set it explicitly. */
+.w-agroup .w-h3 { margin-top: 40px; }
+.w-tally + .w-agroup .w-h3 { margin-top: 30px; }
+
+/* Mini award cards: generic title, placement, and a description of the scale /
+   what it unlocked. Two per row, stretching to equal height. */
+.w-mcards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 600px) { .w-mcards { grid-template-columns: 1fr; } }
+.w-mcard { border: 1px solid var(--hair); background: var(--paper2); padding: 16px 18px; }
+.w-mcard h4 { font-size: 14px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.4; }
+.w-mcap {
+  margin-top: 5px; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--red); font-variant-numeric: tabular-nums;
+}
+.w-mcard p { margin-top: 9px; font-size: 12px; line-height: 1.75; color: var(--mid); }
+.w-malso { margin-top: 14px; font-size: 11px; color: var(--faint); }
+
+/* publication */
+.w-pub { border: 1px solid var(--hair); padding: 22px; background: var(--paper); }
+.w-pub .t { font-size: 14.5px; font-style: italic; line-height: 1.7; }
+.w-pub .m { font-size: 11.5px; color: var(--mid); margin-top: 8px; }
+.w-pub a { color: var(--red); }
+
+/* suminagashi — floating ink, Contact tab */
+.w-sumi { position: relative; margin-top: 26px; border: 1px solid var(--hair); background: var(--paper); }
+.w-sumi canvas { display: block; width: 100%; touch-action: none; cursor: crosshair; }
+.w-sumihint {
+  position: absolute; right: 12px; bottom: 10px; pointer-events: none;
+  font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint);
+}
+
+/* skills canvas */
+.w-skills { border: 1px solid var(--hair); background: var(--paper); }
+.w-skills canvas { display: block; width: 100%; touch-action: none; }
+
+/* contact */
+.w-ct { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.w-cell { border: 1px solid var(--hair); background: var(--paper); padding: 20px; }
+.w-cell .v { margin-top: 7px; font-size: 14px; }
+.w-cell a:hover { color: var(--red); }
+
+/* modal */
+.w-mask {
+  position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center;
+  padding: 24px; background: rgba(28, 25, 20, 0.42); backdrop-filter: blur(4px);
+}
+.w-card {
+  max-width: 620px; width: 100%; background: var(--paper2); border: 1px solid var(--hair);
+  padding: 36px; position: relative; max-height: 84vh; overflow-y: auto;
+}
+.w-card h3 { font-size: 22px; font-weight: 300; letter-spacing: 0.06em; margin: 8px 0 0; }
+.w-card .x {
+  position: absolute; top: 10px; right: 16px; font-size: 22px; color: var(--faint);
+  background: none; border: none; cursor: pointer; line-height: 1; font-family: inherit;
+}
+.w-card .x:hover { color: var(--red); }
+.w-card ul { margin: 16px 0 0 16px; }
+.w-card li { font-size: 13px; color: var(--mid); line-height: 2; margin-bottom: 6px; }
+.w-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.w-tags span {
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--hair); padding: 7px 12px;
+}
+.w-link {
+  display: inline-block; margin-top: 20px; font-size: 9.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; border: 1px solid var(--red); color: var(--red); padding: 11px 18px;
+  transition: background 0.35s, color 0.35s;
+}
+.w-link:hover { background: var(--red); color: var(--paper2); }
+.w-link.primary { background: var(--red); color: var(--paper2); }
+.w-link.primary:hover { background: #a5301f; }
+
+/* footer */
+.w-foot {
+  border-top: 1px solid var(--hair); padding: 26px 0 40px; display: flex;
+  justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
