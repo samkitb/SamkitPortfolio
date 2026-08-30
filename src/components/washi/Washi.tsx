@@ -74,7 +74,6 @@ export const Washi = () => {
             <ParticlePortrait />
             <div className="w-sname">{PROFILE.name}</div>
             <div className="w-role w-cap">{PROFILE.reading}</div>
-            <div className="w-honor">{PROFILE.honor}</div>
             <div className="w-rule" />
             <div className="w-info">
               <div>

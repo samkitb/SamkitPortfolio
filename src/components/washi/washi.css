@@ -77,17 +77,6 @@ body {
 .w-portrait canvas { display: block; width: 100%; }
 .w-sname { font-size: 19px; font-weight: 300; letter-spacing: 0.16em; }
 .w-role { margin-top: 10px; min-height: 22px; }
-/* the one credential worth shouting — the only bordered vermillion in the card */
-.w-honor {
-  display: inline-flex; align-items: center; gap: 9px; margin-top: 14px;
-  border: 1px solid var(--red); color: var(--red);
-  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
-  padding: 9px 13px; line-height: 1;
-}
-.w-honor::before {
-  content: ""; width: 5px; height: 5px; background: var(--red);
-  transform: rotate(45deg); flex: none;
-}
 .w-badge {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 9px;
   border: 1px solid var(--red); color: var(--red);

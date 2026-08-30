@@ -12,7 +12,6 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/samkit-bothra",
   location: "Boca Raton, FL → Austin, TX",
   reading: "UT Austin · CS & Neuroscience",
-  honor: "Turing Scholars Honors",
 };
 
 /* Samkit's own draft (2026-07-23), lightly edited: typos fixed, one redundancy
@@ -23,9 +22,9 @@ export const PROFILE = {
    publications" but the Publication section below lists ONE. Either add the
    others there or make this singular. */
 export const ABOUT = [
-  "I'm an incoming freshman at **UT Austin** in the **Turing Scholars** honors program, majoring in an integrated degree spanning **Computer Science and Neuroscience**. Through dual enrollment at Florida Atlantic University since my freshman year of high school, I've accumulated 100+ college credits and had the chance to take college-level courses (Data Structures, Calculus 1-3, Matrix Theory) and work in undergraduate research along the way.",
+  "I'm an incoming freshman at **UT Austin**, majoring in an integrated degree spanning **Computer Science and Neuroscience**. Through dual enrollment at Florida Atlantic University since my freshman year of high school, I've accumulated 100+ college credits and had the chance to take college-level courses (Data Structures, Calculus 1-3, Matrix Theory) and work in undergraduate research along the way.",
   "I especially enjoy research at the intersection of computer science and other disciplines like **medicine**, **finance**, and **robotics**. That work has let me present at national conferences and first-author multiple publications before starting college. I'm just as drawn to entrepreneurial ventures, where I get to apply what I learn in classes and research labs to a real problem. A couple of my past ventures led to winning statewide competitions and earning access to startup incubators and accelerators.",
-  "At UT Austin, I hope to feed that curiosity by joining entrepreneurial and technical clubs and learning from the professors in the Turing honors classes. And when I get some free time, I'm usually outside playing golf or pickleball, or going for a walk somewhere in beautiful Austin.",
+  "At UT Austin, I hope to feed that curiosity by joining entrepreneurial and technical clubs and learning from my professors. And when I get some free time, I'm usually outside playing golf or pickleball, or going for a walk somewhere in beautiful Austin.",
 ];
 
 /* NOT RENDERED. The "What I do" block was removed from the About tab on
@@ -68,7 +67,7 @@ export const EDUCATION = [
     h: "The University of Texas at Austin",
     org: "B.S. Computer Science and Neuroscience (X+CS Integrated Degree)",
     when: "Aug 2026 – May 2028 · Austin, TX",
-    badge: "Turing Scholars Honors",
+    badge: "",
     mark: "UT",
     logo: "/media/logos/ut-austin.png",
     bullets: [],
