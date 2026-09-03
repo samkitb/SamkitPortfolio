@@ -74,7 +74,7 @@ body {
 .w-side { border: 1px solid var(--hair); background: var(--paper2); padding: 26px 24px 28px; }
 @media (min-width: 961px) { .w-side { position: sticky; top: 26px; } }
 .w-portrait { border: 1px solid var(--hair); background: var(--paper); margin-bottom: 20px; }
-.w-portrait canvas { display: block; width: 100%; }
+.w-portrait img { display: block; width: 100%; }
 .w-sname { font-size: 19px; font-weight: 300; letter-spacing: 0.16em; }
 .w-role { margin-top: 10px; min-height: 22px; }
 .w-badge {

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./washi.css";
 import { BrushName } from "./BrushName";
-import { ParticlePortrait } from "./ParticlePortrait";
+import portraitSrc from "@/assets/samkit-portrait.jpg";
 import { PhysicsTags } from "./PhysicsTags";
 import { Suminagashi } from "./Suminagashi";
 import { FlipDeck } from "./FlipDeck";
@@ -71,7 +71,9 @@ export const Washi = () => {
         {/* ── card ───────────────────────────── */}
         <div className="w-shell">
           <aside className="w-side">
-            <ParticlePortrait />
+            <div className="w-portrait">
+              <img src={portraitSrc} alt="Samkit Bothra" />
+            </div>
             <div className="w-sname">{PROFILE.name}</div>
             <div className="w-role w-cap">{PROFILE.reading}</div>
             <div className="w-rule" />
