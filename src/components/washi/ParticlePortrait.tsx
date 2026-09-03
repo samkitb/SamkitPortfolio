@@ -58,7 +58,11 @@ export const ParticlePortrait = ({ height = 250 }: { height?: number }) => {
       o.fillRect(0, 0, cw, ch);
 
       if (loaded && photo.naturalWidth > 0) {
-        const s = Math.max(cw / photo.naturalWidth, ch / photo.naturalHeight);
+        /* Contain, not cover: the panel goes full-width below the 961px
+           breakpoint, and cropping to fill would cut the top of the head off.
+           Scaling by the smaller axis keeps the whole frame and matches how the
+           silhouette this replaced was sized. */
+        const s = Math.min(cw / photo.naturalWidth, ch / photo.naturalHeight);
         const dw = photo.naturalWidth * s;
         const dh = photo.naturalHeight * s;
         o.drawImage(photo, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
@@ -94,6 +98,13 @@ export const ParticlePortrait = ({ height = 250 }: { height?: number }) => {
           if (a <= 0.02) continue;
 
           const i = ((y + half) * cw + x + half) * 4;
+          const r = PAPER.r + (d[i] - PAPER.r) * a;
+          const g = PAPER.g + (d[i + 1] - PAPER.g) * a;
+          const b = PAPER.b + (d[i + 2] - PAPER.b) * a;
+          /* Grains that landed on bare paper — the letterbox either side of a
+             contained photo — would cost a physics step each to draw nothing. */
+          if (Math.abs(r - PAPER.r) < 3 && Math.abs(g - PAPER.g) < 3 && Math.abs(b - PAPER.b) < 3) continue;
+
           pts.push({
             hx: x,
             hy: y,
@@ -101,9 +112,9 @@ export const ParticlePortrait = ({ height = 250 }: { height?: number }) => {
             y: reduce ? y : Math.random() * ch,
             vx: 0,
             vy: 0,
-            r: PAPER.r + (d[i] - PAPER.r) * a,
-            g: PAPER.g + (d[i + 1] - PAPER.g) * a,
-            b: PAPER.b + (d[i + 2] - PAPER.b) * a,
+            r,
+            g,
+            b,
           });
         }
       }
