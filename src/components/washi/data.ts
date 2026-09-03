@@ -15,15 +15,14 @@ export const PROFILE = {
 };
 
 /* Samkit's own draft (2026-07-23), lightly edited: typos fixed, one redundancy
-   removed, the "currently a freshman" / "I hope to…" tense clash reconciled to
-   "incoming," and split into three paragraphs. Language otherwise his.
+   removed, and split into three paragraphs. Language otherwise his.
 
    ONE on-site consistency flag, unresolved: this says "first-authored multiple
    publications" but the Publication section below lists ONE. Either add the
    others there or make this singular. */
 export const ABOUT = [
-  "I'm an incoming freshman at **UT Austin**, majoring in an integrated degree spanning **Computer Science and Neuroscience**. Through dual enrollment at Florida Atlantic University since my freshman year of high school, I've accumulated 100+ college credits and had the chance to take college-level courses (Data Structures, Calculus 1-3, Matrix Theory) and work in undergraduate research along the way.",
-  "I especially enjoy research at the intersection of computer science and other disciplines like **medicine**, **finance**, and **robotics**. That work has let me present at national conferences and first-author multiple publications before starting college. I'm just as drawn to entrepreneurial ventures, where I get to apply what I learn in classes and research labs to a real problem. A couple of my past ventures led to winning statewide competitions and earning access to startup incubators and accelerators.",
+  "I am a freshman at **UT Austin**, majoring in an integrated degree spanning **Computer Science and Neuroscience**. Through dual enrollment at Florida Atlantic University since my freshman year of high school, I've accumulated 100+ college credits and had the chance to take college-level courses (Data Structures, Calculus 1-3, Matrix Theory) and work in undergraduate research along the way.",
+  "I especially enjoy working at the intersection of computer science and other disciplines like **medicine**, **finance**, and **robotics**. That work has let me present at national conferences and first-author multiple publications before starting college. I'm just as drawn to entrepreneurial ventures, where I get to apply what I learn in classes and research labs to a real problem. A couple of my past ventures led to winning statewide competitions and earning access to startup incubators and accelerators.",
   "At UT Austin, I hope to feed that curiosity by joining entrepreneurial and technical clubs and learning from my professors. And when I get some free time, I'm usually outside playing golf or pickleball, or going for a walk somewhere in beautiful Austin.",
 ];
 
